@@ -6,17 +6,19 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "./generated/client"
 }
 
 datasource db {
   provider = "sqlite"
   url      = "file:./rental.db"
 }
+
 model Vehicle {
-  id               Int            @id @default(autoincrement())
-  licensePlate     String         @unique
-  brand           String
-  model           String
+  id               Int             @id @default(autoincrement())
+  licensePlate     String          @unique
+  brand            String
+  model            String
   rentalContract   RentalContract? @relation(fields: [rentalContractId], references: [id])
   rentalContractId Int?
 }
@@ -28,4 +30,3 @@ model RentalContract {
   endDate      DateTime
   vehicles     Vehicle[]
 }
-
