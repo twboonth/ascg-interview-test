@@ -51,7 +51,7 @@ export default function Table() {
       if (endDate)
         searchParams.set("endDate", endDate.toISOString().split("T")[0]);
 
-      const response = await fetch(`/api/rental?${searchParams.toString()}`);
+      const response = await fetch(`http://localhost:4000/api/rental?${searchParams.toString()}`);
 
       if (!response.ok) {
         throw new Error("Failed to fetch data");
